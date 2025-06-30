@@ -1,0 +1,7 @@
+.card-title{
+    text-overflow: ellipsis;
+    height: 52px;
+}
+img.object-fit-contain {
+    height: 200px;
+}
