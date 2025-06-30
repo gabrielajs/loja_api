@@ -12,6 +12,11 @@ export const routes: Routes = [
         path: '',
         redirectTo: 'produtos',
         pathMatch: 'full'
+    },
+    {
+        //rota de redirecionamento de produto especifico
+        path: 'produtos/:id',
+        loadComponent: () => import('./pages/produto-detalhes/produto-detalhes').then(m => m.ProdutoDetalhes)
     }
 ];
 

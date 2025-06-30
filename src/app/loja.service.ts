@@ -15,5 +15,11 @@ export class LojaService {
     //faz uma requisição GET para a API e retorna os produtos
     return this.http.get(this.apiUrl)
   }
+
+  //metodo para obter um produto específico pelo id
+  getProdutoById(id: number) {
+    //faz uma requisição GET para a API e retorna o produto com o id especificado
+    return this.http.get(`${this.apiUrl}/${id}`);
+  }
   
 }
