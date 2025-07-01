@@ -2,14 +2,15 @@
     <section class="container">
         <div class="row row-cols-1 row-cols-md-3 g-4 mt-2">
           <div class="col" *ngFor="let produto of produtos">
-            <div class="card h-100">
-              <img [src]="produto.image" class="card-img-top object-fit-contain p-1" alt="produto.title">
-              <div class="card-body">
-                <h5 class="card-title overflow-hidden">{{ produto.title }}</h5>
-                <p class="card-text">{{ produto.price | currency:'BRL' }} <p>
-                <a href="#" class="btn btn-primary text-uppercase">comprar</a>
+            <a [routerLink]="['/produtos', produto.id]" class="text-decoration-none">
+              <div class="card h-100">
+                <img [src]="produto.image" class="card-img-top object-fit-contain p-1" alt="produto.title">
+                <div class="card-body">
+                  <h5 class="card-title overflow-hidden">{{ produto.title }}</h5>
+                  <p class="card-text">{{ produto.price | currency:'BRL' }} <p>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
         </div>
     </section>
