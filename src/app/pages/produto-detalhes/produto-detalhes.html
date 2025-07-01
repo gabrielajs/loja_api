@@ -1,1 +1,16 @@
-<p>produto-detalhes works!</p>
+<main>
+    <section class="container pt-3">
+        <div class="d-flex" *ngIf="produto">
+            <div>
+                <img [src]="produto.image" alt="produto.title" class="img-fluid">
+            </div>
+            <div class="ps-3">
+                <h1>{{ produto.title }}</h1>
+                <p><strong>Detalhes:</strong></p>
+                <p>{{ produto.description }}</p>
+                <p><strong>Preço:</strong> {{ produto.price | currency: 'BRL' }}</p>
+                <button class="btn btn-primary">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+    </section>
+</main>
