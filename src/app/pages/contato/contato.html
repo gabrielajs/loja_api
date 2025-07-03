@@ -1,0 +1,58 @@
+<main>
+    <section class="container-sm">
+        <form class="pt-3" [formGroup]="formContato">
+            <div class="mb-3">
+                <label for="nomeCompleto" class="form-label">Digite nome completo*</label>
+                <input type="text" class="form-control" id="nomeCompleto" placeholder="nome completo" formControlName="nome" 
+                        [class.valid]="formContato.controls['nome'].valid" 
+                        [class.invalid]="formContato.controls['nome'].invalid && (formContato.controls['nome'].touched || formContato.controls['nome'].dirty)">
+
+                <div *ngIf="formContato.controls['nome'].invalid && (formContato.controls['nome'].touched || formContato.controls['nome'].dirty)" >
+                    <p class="alert alert-danger mt-1" *ngIf="formContato.controls['nome'].hasError('minlength')">O campo precisa ter no mínimo 4 caracteres</p>
+                    <p class="alert alert-danger mt-1" *ngIf="formContato.controls['nome'].hasError('required')">O campo precisa ser preenchido</p>
+                </div>
+            </div>
+            
+            <div class="mb-3">
+                <label for="email" class="form-label">E-mail*</label>
+                <input type="email" class="form-control" id="email" placeholder="e-mail valido" formControlName="email" 
+                        [class.valid]="formContato.controls['email'].valid"
+                        [class.invalid]="formContato.controls['email'].invalid && (formContato.controls['email'].touched || formContato.controls['email'].dirty)">
+
+                <div *ngIf="formContato.controls['email'].invalid && (formContato.controls['email'].touched || formContato.controls['email'].dirty)">
+                    <p class="alert alert-danger mt-1" *ngIf="formContato.controls['email'].hasError('email')">E-mail inválido</p>
+                    <p class="alert alert-danger mt-1" *ngIf="formContato.controls['email'].hasError('required')">O campo precisa ser preenchido</p>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="tipo" class="form-label">Assunto*</label>
+                <select id="tipo" class="form-select" formControlName="assunto" 
+                        [class.valid]="formContato.controls['assunto'].valid"
+                        [class.invalid]="formContato.controls['assunto'].invalid && (formContato.controls['assunto'].touched || formContato.controls['assunto'].dirty)">
+                    <option selected>Tipo de mensagem</option>
+                    <option>Elogios</option>
+                    <option>Ouvidoria</option>
+                    <option>Sugestões</option>
+                </select>  
+                
+                <div *ngIf="formContato.controls['assunto'].invalid && (formContato.controls['assunto'].touched || formContato.controls['assunto'].dirty)">
+                    <p class="alert alert-danger mt-1" *ngIf="formContato.controls['assunto'].hasError('required')">Precisa escolher uma opção</p>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="mensagem" class="form-label">Mensagem*</label>
+                <textarea class="form-control" id="mensagem" rows="3" placeholder="..." formControlName="mensagem"
+                           [class.valid]="formContato.controls['mensagem'].valid"
+                           [class.invalid]="formContato.controls['mensagem'].invalid && (formContato.controls['assunto'].touched || formContato.controls['assunto'].dirty)"></textarea>
+                
+                <div *ngIf="formContato.controls['mensagem'].invalid && (formContato.controls['mensagem'].touched || formContato.controls['mensagem'].dirty)">
+                    <p class="alert alert-danger" *ngIf="formContato.controls['mensagem'].hasError('required')">O campo precisa ser preenchido</p>
+                    <p class="alert alert-danger" *ngIf="formContato.controls['mensagem'].hasError('minlength')">O campo precisa ter no mínimo 10 caracteres</p>
+                </div>
+            </div>
+            <div class="mb-3">
+                <button (click)="enviarForm()" class="btn btn-primary">Enviar</button>
+            </div>
+        </form>
+    </section>
+</main>

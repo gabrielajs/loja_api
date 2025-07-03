@@ -17,6 +17,11 @@ export const routes: Routes = [
         //rota de redirecionamento de produto especifico
         path: 'produtos/:id',
         loadComponent: () => import('./pages/produto-detalhes/produto-detalhes').then(m => m.ProdutoDetalhes)
+    },
+    {
+        //rota de redirecionamento de contato
+        path: 'contato',
+        loadComponent: () => import('./pages/contato/contato').then(m => m.Contato)
     }
 ];
 
