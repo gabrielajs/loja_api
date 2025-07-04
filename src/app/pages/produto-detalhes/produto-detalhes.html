@@ -9,7 +9,7 @@
                 <p><strong>Detalhes:</strong></p>
                 <p>{{ produto.description }}</p>
                 <p><strong>Preço:</strong> {{ produto.price | currency: 'BRL' }}</p>
-                <button class="btn btn-primary">Adicionar ao Carrinho</button>
+                <button (click)="adicionarAoCarrinho()" class="btn btn-primary">Adicionar ao Carrinho</button>
             </div>
         </div>
     </section>

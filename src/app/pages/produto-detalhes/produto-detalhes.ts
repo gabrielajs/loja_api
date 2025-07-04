@@ -1,7 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { LojaService } from '../../loja.service';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { NotificacaoService } from '../../notificacao.service';
+import { CarrinhoService } from '../../carrinho.service';
+
 
 @Component({
   selector: 'app-produto-detalhes',
@@ -9,12 +12,15 @@ import { CommonModule } from '@angular/common';
   templateUrl: './produto-detalhes.html',
   styleUrl: './produto-detalhes.css'
 })
+
 export class ProdutoDetalhes {
 
   produto: any = {};
 
   constructor(private lojaService: LojaService,
-              private route: ActivatedRoute
+              private route: ActivatedRoute,
+              private notificacaoService: NotificacaoService,
+              private carrinhoService: CarrinhoService
   ) {}
 
   ngOnInit(){
@@ -33,6 +39,11 @@ export class ProdutoDetalhes {
         });
       }
     });
+  }
+
+  adicionarAoCarrinho() {
+    this.carrinhoService.addCarrinho(this.produto);
+    this.notificacaoService.notificacao('Produto adicionado ao carrinho com sucesso!');
   }
 
 }

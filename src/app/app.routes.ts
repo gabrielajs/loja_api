@@ -22,6 +22,11 @@ export const routes: Routes = [
         //rota de redirecionamento de contato
         path: 'contato',
         loadComponent: () => import('./pages/contato/contato').then(m => m.Contato)
+    },
+    {
+        //rota de redirecionamento do carrinho
+        path: 'carrinho',
+        loadComponent: () => import('./pages/carrinho/carrinho').then(m => m.Carrinho)
     }
 ];
 
