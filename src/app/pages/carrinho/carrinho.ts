@@ -28,4 +28,8 @@ export class Carrinho {
     this.getCarrinho();
   }
 
+  removerPorId(id: number){
+    this.carrinhoService.removeById(id);
+  }
+
 }

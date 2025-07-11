@@ -17,6 +17,7 @@ export class CarrinhoService {
     }
   }
 
+  //carrega os itens do carrinho que está no localStorage
   obterCarrinho() {
     if (typeof window !== 'undefined') {
       const local = localStorage.getItem('cards');
@@ -25,6 +26,7 @@ export class CarrinhoService {
     return [];
   }
 
+  //adiciona o produto ao carrinho e salva no localStorage
   addCarrinho(produto: any) {
     this.itens.push(produto);
     if (typeof window !== 'undefined') {
@@ -32,10 +34,22 @@ export class CarrinhoService {
     }
   }
 
+  //remove o produto do carrinho e atualiza o localStorage
   limparCarrinho() {
     this.itens = [];
     if (typeof window !== 'undefined') {
       localStorage.removeItem('cards');
     }
+  }
+
+  removeById(id: number) {
+    const local = localStorage.getItem('cards')
+    if(local){
+      const itens = JSON.parse(local);
+      const itensFilter = itens.filter((item: any) => item.id !== id);
+      localStorage.setItem('cards', JSON.stringify(itensFilter));
+    }
+
+    console.log('Itens antes da remoção:', this.itens);
   }
 }
