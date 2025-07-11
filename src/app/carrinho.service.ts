@@ -38,18 +38,4 @@ export class CarrinhoService {
       localStorage.removeItem('cards');
     }
   }
-
-  /*obterCarrinho(){
-    return JSON.parse(localStorage.getItem('cards') || "");
-  }
-
-  addCarrinho(produto: any){
-    this.itens.push(produto);
-    localStorage.setItem('cards', JSON.stringify(this.itens));
-  }
-
-  limparCarrinho() {
-    this.itens = [];
-    localStorage.removeItem('cards');
-  }*/
 }

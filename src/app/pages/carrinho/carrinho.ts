@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { CarrinhoService } from '../../carrinho.service';
 
 
 @Component({
@@ -9,12 +10,22 @@ import { Component } from '@angular/core';
   styleUrl: './carrinho.css'
 })
 export class Carrinho {
-  constructor() {
+
+  constructor(private carrinhoService: CarrinhoService) {
     
   }
 
   ngOnInit() {
-    
+    this.getCarrinho();
+  }
+
+  getCarrinho(){
+    return this.carrinhoService.obterCarrinho();
+  }
+
+  limparCarrinho(){
+    this.carrinhoService.limparCarrinho();
+    this.getCarrinho();
   }
 
 }
