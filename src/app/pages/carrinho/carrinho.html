@@ -1,18 +1,25 @@
 <main>
-    <section class="container-sm">        
-            <div class="row align-items-start border mt-3 p-3" *ngFor="let produto of getCarrinho()">
-                <div class="col">
-                    <img src="{{ produto.image }}" alt="" class="img-fluid" style="max-width: 100px; max-height: 100px;">
-                </div>
-                <div class="col">
-                    <p>{{ produto.title }}</p>
-                </div>
-                <div class="col">
-                    <p>{{ produto.price | currency: 'BRL': 'symbol': '1.2-2' }}</p>
-                </div>
+    <section class="container-sm"> 
+        <div *ngIf="getCarrinho().length === 0" class="alert alert-success mt-3" role="alert">
+            carrinho vazio
+        </div>
+
+        <div class="row align-items-start border mt-3 p-3" *ngFor="let produto of getCarrinho()">       
+            <div class="col">
+                <img src="{{ produto.image }}" alt="" class="img-fluid" style="max-width: 100px; max-height: 100px;">
             </div>
+            <div class="col">
+                <p>{{ produto.title }}</p>
+            </div>
+            <div class="col">
+                <p>{{ produto.price | currency: 'BRL': 'symbol': '1.2-2' }}</p>
+            </div>
+        </div>
+
+            <!-- <div class="alert alert-success mt-3" role="alert">
+                {{ this.getCarrinho().length === 0 ? 'Carrinho vazio' : 'Total: ' + ( getCarrinho().totalCarrinho() ) | currency: 'BRL': 'symbol': '1.2-2' }}
+            </div> -->
             
-            <button class="btn btn-secondary" (click)="limparCarrinho()">Limpar</button>
+        <button class="btn btn-secondary mt-3" (click)="limparCarrinho()">Limpar</button>
     </section>
-    
 </main>
