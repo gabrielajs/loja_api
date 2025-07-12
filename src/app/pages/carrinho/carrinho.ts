@@ -11,12 +11,13 @@ import { CarrinhoService } from '../../carrinho.service';
 })
 export class Carrinho {
 
-  constructor(private carrinhoService: CarrinhoService) {
-    
-  }
+  itens: any[] = [];
+  total: number = 0;
+
+  constructor(private carrinhoService: CarrinhoService) {}
 
   ngOnInit() {
-    this.getCarrinho();
+    this.atualizarCarrinho();
   }
 
   getCarrinho(){
@@ -30,6 +31,15 @@ export class Carrinho {
 
   removerPorId(id: number){
     this.carrinhoService.removeById(id);
+  }
+
+  totalCarrinho(){
+    this.carrinhoService.sumPrice();
+  }
+
+  atualizarCarrinho() {
+    this.itens = this.carrinhoService.obterCarrinho();
+    this.total = this.carrinhoService.sumPrice();
   }
 
 }

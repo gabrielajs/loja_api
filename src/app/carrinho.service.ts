@@ -42,6 +42,7 @@ export class CarrinhoService {
     }
   }
 
+  //remove um produto específico do carrinho pelo ID
   removeById(id: number) {
     const local = localStorage.getItem('cards')
     if(local){
@@ -49,7 +50,25 @@ export class CarrinhoService {
       const itensFilter = itens.filter((item: any) => item.id !== id);
       localStorage.setItem('cards', JSON.stringify(itensFilter));
     }
-
-    console.log('Itens antes da remoção:', this.itens);
   }
+
+  sumPrice(): number {
+    if (typeof window === 'undefined') return 0;
+
+    const local = localStorage.getItem('cards');
+    const itens = JSON.parse(local || '[]');
+    let total = 0;
+
+    itens.forEach((item: any) => {
+      const price = parseFloat(item.price);
+      if (!isNaN(price)) {
+        total += price;
+      }
+    });
+
+    total = parseFloat(total.toFixed(2));
+    console.log(total);
+    return total;
+  }
+
 }
